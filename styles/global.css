@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Mochiy+Pop+One&family=Permanent+Marker&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Shippori+Antique&display=swap');
+
+:root {
+    --primary-color: #ff9900;
+    --secondary-color: #cf871d;
+    --tertiary-color: #334756;
+    --quaternary-color: #2c394b;
+    --quinary-color: #111d32;
+    --senary-color: #01121f;
+}
