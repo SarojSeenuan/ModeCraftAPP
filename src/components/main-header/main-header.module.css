@@ -1,24 +1,29 @@
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2rem 1rem;
     font-family: 'Quantico', sans-serif;
+    z-index: 10;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
     .header {
         padding: 2rem 10%;
     }
 }
 
 .nav ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	gap: 1.5rem;
-	font-size: 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1.5rem;
+    font-size: 1.25rem;
 }
 
 .header .middle {
@@ -32,7 +37,7 @@
 .header .right {
     flex: 1;
     display: flex;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -53,4 +58,32 @@
     height: 5rem;
     object-fit: contain;
     filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
+}
+
+/* モバイルデバイス用 */
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .logo {
+        margin-bottom: 1rem;
+    }
+}
+
+/* タブレットデバイス用 */
+@media (min-width: 481px) and (max-width: 768px) {
+    .header {
+        padding: 2rem 5%;
+    }
+
+    .nav ul {
+        gap: 1rem;
+    }
 }

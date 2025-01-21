@@ -1,22 +1,17 @@
 'use client';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import Scene from '../../components/avatar-room/scene';
 import classes from './page.module.css';
 
 export default function AvatarRoomPage() {
     return (
-        <section>
+        <section className={classes.section}>
             <Canvas
                 camera={{
-                    position: [ 3, 3, 3 ], // Set the camera position
+                    position: [ 0, 0, 0.0001 ],
                 }}
             >
-                <OrbitControls />
-
-                <mesh>
-                    <boxGeometry args={[ 0.5, 0.5, 0.5 ]} />
-                    <meshNormalMaterial />
-                </mesh>
+                <Scene />
             </Canvas>
         </section>
     );

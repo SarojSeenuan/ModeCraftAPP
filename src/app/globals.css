@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Itim&family=Mochiy+Pop+One&family=Permanent+Marker&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Shippori+Antique&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Mochiy+Pop+One&family=Permanent+Marker&family=Plaster&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Shippori+Antique&display=swap');
 
 * {
     box-sizing: border-box;
@@ -11,6 +12,13 @@
     --quaternary-color: #2c394b;
     --quinary-color: #111d32;
     --senary-color: #01121f;
+
+    --color-text: #ffffff;
+    --color-bg: #060606;
+    --color-bg-accent: #111111;
+    --size: clamp(10rem, 1rem + 40vmin, 30rem);
+    --gap: calc(var(--size) / 14);
+    --duration: 60s;
 }
 
 /* スクロールバーのスタイリング */
