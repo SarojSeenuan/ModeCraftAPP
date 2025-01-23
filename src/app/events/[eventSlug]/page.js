@@ -13,8 +13,6 @@ export async function generateMetadata({ params }) {
 }
 
 
-
-
 export default function EventDetailsPage({ params }) {
     const event = getEvent(params.eventSlug);
     const formattedDate = new Date(event.date).toLocaleDateString('jp', {
