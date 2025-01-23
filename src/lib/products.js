@@ -10,7 +10,7 @@ const s3 = new S3({
 const db = sql('products.db');
 
 export async function getProducts() {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     return db.prepare('SELECT * FROM products').all();
 }

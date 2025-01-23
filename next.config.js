@@ -8,6 +8,12 @@ const nextConfig = {
                 port: '',
                 pathname: '/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'modecraft-events-image.s3.amazonaws.com',
+                port: '',
+                pathname: '/**',
+            },
         ],
     },
 };

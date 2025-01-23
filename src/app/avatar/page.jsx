@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import { Canvas } from '@react-three/fiber';
 import Scene from '../../components/avatar-room/scene';
 import classes from './page.module.css';

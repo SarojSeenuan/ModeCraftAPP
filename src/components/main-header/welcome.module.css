@@ -1,0 +1,56 @@
+/* welcome.module.css */
+
+.welcome {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.welcomeContent {
+    position: absolute;
+    text-align: center;
+    color: white;
+    z-index: 10;
+}
+
+.welcomeContent h1 {
+    font-size: 6rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-family: 'Nabla', serif;
+    text-transform: uppercase;
+}
+
+
+
+.welcomeContent .action {
+    margin-top: 1.5rem;
+}
+
+.welcomeContent .action a {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(90deg, #f9572a, #ff9b05);
+    font-family: 'Press Start 2P', serif;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    display: inline-block;
+}
+
+.welcomeContent .action a:hover {
+    background: linear-gradient(90deg, #fd4715, #f9b241);
+    box-shadow: 0 0 12px rgba(242, 100, 18, 0.8);
+}
+
+.scene {
+    position: fixed;
+    inset: 0;
+
+}

@@ -24,7 +24,7 @@ export default function MainHeader() {
                             <NavLink href='/avatar'>Avatar Room</NavLink>
                         </li>
                         <li>
-                            <NavLink href='/shop'>Shop</NavLink>
+                            <NavLink href='/events'>Events</NavLink>
                         </li>
                     </ul>
 

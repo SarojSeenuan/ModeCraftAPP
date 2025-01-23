@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Itim&family=Mochiy+Pop+One&family=Permanent+Marker&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Shippori+Antique&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&family=Mochiy+Pop+One&family=Permanent+Marker&family=Plaster&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Shippori+Antique&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Climate+Crisis&family=Nabla&family=Press+Start+2P&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Dela+Gothic+One&family=Press+Start+2P&family=Rampart+One&family=Stick&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -53,6 +57,7 @@ body {
 .error {
     margin-top: 5rem;
     text-align: center;
+    padding-top: 10vh;
 }
 
 .not-found h1,

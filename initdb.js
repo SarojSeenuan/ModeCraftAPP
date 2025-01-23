@@ -1,6 +1,7 @@
 import sql from 'better-sqlite3';
 
-const db = sql('products.db');
+const dbProducts = sql('products.db');
+const dbEvents = sql('events.db');
 
 const dummyProducts = [
     {
@@ -198,7 +199,77 @@ const dummyProducts = [
     // 他の製品をここに追加できます
 ];
 
-db.prepare(
+const dummyEvents = [
+    {
+        slug: "fashion-future-expo",
+        title: "Fashion Future Expo",
+        image: "fashionshow.jpeg",
+        summary: "Explore the cutting-edge of fashion technology",
+        instructions: "Registration required. Bring your innovation spirit!",
+        creator: "ModeCraft Team",
+        creator_email: "events@modecraft.com",
+        location: "Tokyo International Forum, Tokyo, Japan",
+        date: "2024-09-15"
+    },
+    {
+        slug: "web-creator",
+        title: "Webクリエイター交流会",
+        image: "webdesigner.jpg",
+        summary: "Join industry leaders to discuss the future of technology.",
+        instructions: "Tickets available online. Early bird discounts apply.",
+        creator: "Tech World",
+        creator_email: "info@techworld.com",
+        location: "Shinjuku Gyoen, Tokyo, Japan",
+        date: "2024-10-05"
+    },
+    {
+        slug: "art-exhibition-2024",
+        title: "Art Exhibition 2024",
+        image: "artgallery.jpeg",
+        summary: "Showcasing contemporary art from emerging artists.",
+        instructions: "Free entry. Donations welcome.",
+        creator: "Art Collective",
+        creator_email: "contact@artcollective.com",
+        location: "Tokyo Art Museum, Tokyo, Japan",
+        date: "2024-11-01"
+    },
+    {
+        slug: "summer-sonic-festival",
+        title: "Summer Sonic Festival",
+        image: "summersonic.jpg",
+        summary: "A weekend of live music and fun activities.",
+        instructions: "2024年は、東京⼤阪全⽇程がソールドアウトとなり、ソニックマニアを合わせ25万8000⼈の動員を記録。サマソニ⼤阪は万博記念公園に場所を移しての開催、また、新たな試みとしてサマソニバンコクを初開催し、アジア圏のリーディングフェスティバルとしての存在を世界にアピールした。24回⽬の開催となる2025年も、東京・⼤阪の各会場へ各国から多様なアーティストを迎えるべく⽬下準備を進行中とのことだ。",
+        creator: "Music Lovers",
+        creator_email: "hello@musiclovers.com",
+        location: "Zozomarine stadium, Tokyo, Japan",
+        date: "2025-08-16"
+    },
+    {
+        slug: "osaka-gigantic",
+        title: "OSAKA GIGANTIC MUSIC FESTIVAL 2025",
+        image: "gigantic.jpg",
+        summary: "osaka gigantic music festival",
+        instructions: "ジャイガ”の愛称で知られる「オオサカ ジャイガンティック ミュージック フェスティバル」は、2017年にスタートした大阪発の人気音楽フェスだ。2024年の開催時には、2日間で55,000人を動員。マキシマム ザ ホルモンやキタニタツヤ、ずっと真夜中でいいのに。、MY FIRST STORY、imaseら幅広いジャンルの人気アーティストが多数出演し、ステージを熱く盛り上げた。",
+        creator: "Gigantic",
+        creator_email: "info@culinaryarts.com",
+        location: "Osaka 万博記念公園, Osaka, Japan",
+        date: "2025-7-19"
+    },
+    {
+        slug: "startup-pitch-night",
+        title: "Startup Pitch Night",
+        image: "startup.jpeg",
+        summary: "Watch startups pitch their ideas to investors.",
+        instructions: "Networking session after pitches. Refreshments provided.",
+        creator: "Startup Hub",
+        creator_email: "events@startuphq.com",
+        location: "Tokyo Startup Center, Tokyo, Japan",
+        date: "2025-11-30"
+    },
+    // ... more events
+];
+
+dbProducts.prepare(
     `
    CREATE TABLE IF NOT EXISTS products (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -213,8 +284,46 @@ db.prepare(
 `
 ).run();
 
-async function initData() {
-    const stmt = db.prepare(`
+dbEvents.prepare(
+    `
+   CREATE TABLE IF NOT EXISTS events (
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       slug TEXT NOT NULL UNIQUE,
+       title TEXT NOT NULL,
+       image TEXT NOT NULL,
+       summary TEXT NOT NULL,
+       instructions TEXT NOT NULL,
+       creator TEXT NOT NULL,
+       creator_email TEXT NOT NULL,
+       location TEXT NOT NULL,
+       date TEXT NOT NULL
+    )
+`
+).run();
+
+async function initDataEvents() {
+    const stmt = dbEvents.prepare(`
+        INSERT INTO events VALUES (
+            null,
+            @slug,
+            @title,
+            @image,
+            @summary,
+            @instructions,
+            @creator,
+            @creator_email,
+            @location,
+            @date
+        )
+    `);
+
+    for (const event of dummyEvents) {
+        stmt.run(event);
+    }
+}
+
+async function initDataProduct() {
+    const stmt = dbProducts.prepare(`
       INSERT INTO products VALUES (
          null,
          @slug,
@@ -232,4 +341,5 @@ async function initData() {
     }
 }
 
-initData();
+initDataProduct();
+initDataEvents();
