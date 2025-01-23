@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 
 
 export async function generateMetadata({ params }) {
-    const event = getEvent(params.eventSlug);
+    const event = await getEvent(params.eventSlug);
     return {
         title: event.title,
         description: event.summary,
@@ -13,8 +13,8 @@ export async function generateMetadata({ params }) {
 }
 
 
-export default function EventDetailsPage({ params }) {
-    const event = getEvent(params.eventSlug);
+export default async function EventDetailsPage({ params }) {
+    const event = await getEvent(params.eventSlug);
     const formattedDate = new Date(event.date).toLocaleDateString('jp', {
         day: 'numeric',
         month: 'short',

@@ -5,15 +5,15 @@ import { notFound } from 'next/navigation';
 
 
 export async function generateMetadata({ params }) {
-    const product = getProduct(params.productSlug);
+    const product = await getProduct(params.productSlug);
     return {
         title: product.title,
         description: product.summary,
     };
 }
 
-export default function ProductDetailsPage({ params }) {
-    const product = getProduct(params.productSlug);
+export default async function ProductDetailsPage({ params }) {
+    const product = await getProduct(params.productSlug);
 
     if (!product) {
         notFound();
