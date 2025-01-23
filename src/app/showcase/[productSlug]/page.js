@@ -2,6 +2,7 @@ import { getProduct } from 'modecraft/lib/products';
 import classes from './page.module.css';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 
 
 export async function generateMetadata({ params }) {
@@ -23,28 +24,30 @@ export default async function ProductDetailsPage({ params }) {
 
     return (
         <>
-            <header className={classes.header}>
-                <div className={classes.image}>
-                    <Image
-                        src={`https://modecraft-products-image.s3.amazonaws.com/${product.image}`}
-                        alt={product.title}
-                        fill
-                    />{' '}
-                </div>
-                <div className={classes.headerText}>
-                    <h1>{product.title}</h1>
-                    <p className={classes.creator}>
-                        by <a href={`malito:${product.creator_email}`}>{product.creator}</a>
-                    </p>
-                    <p className={classes.summary}>{product.summary}</p>
-                </div>
-            </header>
-            <main>
-                <p
-                    className={classes.instructions}
-                    dangerouslySetInnerHTML={{ __html: product.instructions }}
-                ></p>
-            </main>
+            <Suspense fallback={<p className={classes.loading}>Fetching Page....</p>}>
+                <header className={classes.header}>
+                    <div className={classes.image}>
+                        <Image
+                            src={`https://modecraft-products-image.s3.amazonaws.com/${product.image}`}
+                            alt={product.title}
+                            fill
+                        />{' '}
+                    </div>
+                    <div className={classes.headerText}>
+                        <h1>{product.title}</h1>
+                        <p className={classes.creator}>
+                            by <a href={`malito:${product.creator_email}`}>{product.creator}</a>
+                        </p>
+                        <p className={classes.summary}>{product.summary}</p>
+                    </div>
+                </header>
+                <main>
+                    <p
+                        className={classes.instructions}
+                        dangerouslySetInnerHTML={{ __html: product.instructions }}
+                    ></p>
+                </main>
+            </Suspense>
         </>
     );
 }

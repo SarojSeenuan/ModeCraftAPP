@@ -74,12 +74,14 @@
     animation: fade-slide-in-from-bottom 1s ease-out forwards;
 }
 
+
+
 .loading {
     font-size: 3rem;
     text-align: center;
     color: #ddd6cb;
     font-weight: bold;
-    animation: flash 1s ease-in-out infinite alternate;
+    animation: flash 1s ease-in-out infinite alternate, fade-in 0.5s ease-in;
 }
 
 @keyframes fade-slide-in-from-left {
